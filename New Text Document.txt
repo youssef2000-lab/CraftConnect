@@ -1,0 +1,56 @@
+artisan-platform/               
+│
+├── backend/                     # Laravel Backend 
+│   ├── app/
+│   │   ├── Http/
+│   │   │   ├── Controllers/
+│   │   │   │   ├── AuthController.php
+│   │   │   │   ├── ArtisanController.php
+│   │   │   │   ├── ServiceController.php
+│   │   │   │   ├── OrderController.php
+│   │   │   │   └── ReviewController.php
+│   │   │   └── Middleware/
+│   │   └── Models/
+│   │       ├── User.php
+│   │       ├── ArtisanProfile.php
+│   │       ├── Service.php
+│   │       ├── Order.php
+│   │       └── Review.php
+│   ├── database/
+│   │   ├── migrations/
+│   │   └── seeders/
+│   ├── routes/
+│   │   └── api.php
+│   ├── config/
+│   └── ...
+│
+├── frontend/                     # React Frontend
+│   ├── public/
+│   └── src/
+│       ├── assets/
+│       │   ├── images/
+│       │   └── icons/
+│       ├── components/
+│       │   ├── Header.jsx
+│       │   ├── Footer.jsx
+│       │   ├── ArtisanCard.jsx
+│       │   ├── ServiceCard.jsx
+│       │   └── ReviewItem.jsx
+│       ├── pages/
+│       │   ├── HomePage.jsx
+│       │   ├── ArtisansPage.jsx
+│       │   ├── ArtisanProfilePage.jsx
+│       │   ├── LoginPage.jsx
+│       │   ├── RegisterPage.jsx
+│       │   ├── ArtisanDashboard.jsx
+│       │   ├── ClientDashboard.jsx
+│       │   └── AdminDashboard.jsx
+│       ├── context/               #  Redux store
+│       │   └── AuthContext.jsx
+│       ├── api/
+│       │   └── axios.js
+│       ├── App.jsx
+│       ├── main.jsx
+│       └── index.css
+│
+└── README.md

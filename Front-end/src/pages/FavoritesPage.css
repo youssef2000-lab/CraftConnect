@@ -1,0 +1,137 @@
+/* FavoritesPage Styles */
+.favorites-page {
+  padding-top: 80px;
+  min-height: 100vh;
+  padding-bottom: 4rem;
+}
+
+.page-header {
+  padding: 2rem 5%;
+  background: linear-gradient(135deg, rgba(62, 142, 88, 0.1) 0%, transparent 50%);
+}
+
+.page-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.page-header p {
+  color: #9ca3af;
+}
+
+.favorites-content {
+  padding: 2rem 5%;
+}
+
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.favorite-card {
+  background-color: rgba(31, 41, 55, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.favorite-card:hover {
+  border-color: rgba(62, 142, 88, 0.3);
+  transform: translateY(-2px);
+}
+
+.favorite-image {
+  position: relative;
+  height: 180px;
+}
+
+.favorite-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.favorite-image .available-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 4px 10px;
+  background-color: #52b776;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 20px;
+}
+
+.favorite-info {
+  padding: 1.5rem;
+}
+
+.favorite-info h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 0.25rem;
+}
+
+.favorite-info .profession {
+  color: #52b776;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.favorite-info .rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.85rem;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.favorite-info .rating svg {
+  width: 14px;
+  height: 14px;
+  color: #fbbf24;
+}
+
+.favorite-info .count {
+  color: #6b7280;
+  font-size: 0.8rem;
+}
+
+.favorite-info .location {
+  color: #9ca3af;
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.favorite-info .description {
+  color: #d1d5db;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.favorite-info .price {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.favorite-info .price-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+}
+
+.favorite-info .price-unit {
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+

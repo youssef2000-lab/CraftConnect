@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { loginUser, clearError } from '../features/auth/authSlice';
+import { loginUser, clearError } from '../store/authSlice';
 import '../styles/auth.css';
 
 const LoginPage = () => {
@@ -18,7 +18,10 @@ const LoginPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(loginUser(formData));
+    dispatch(loginUser({
+      email: formData.email,
+      motDePasse: formData.password
+    }));
   };
 
   React.useEffect(() => {

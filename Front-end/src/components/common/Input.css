@@ -1,0 +1,148 @@
+/* Input Component Styles - Dark Theme Compatible */
+
+.form-floating-custom {
+  position: relative;
+  margin-bottom: 1.75rem;
+}
+
+.form-floating-custom .form-control {
+  height: 64px;
+  padding: 1rem 1.25rem 0;
+  background-color: rgba(26, 26, 26, 0.8) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  font-size: 1rem;
+  transition: all 0.3s ease !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.form-floating-custom .form-control:focus {
+  border-color: #0d6efd !important;
+  background-color: rgba(13, 110, 253, 0.05) !important;
+  box-shadow: 0 0 0 0.375rem rgba(13, 110, 253, 0.15) !important;
+  transform: translateY(-2px);
+}
+
+.form-floating-custom .form-control::placeholder {
+  color: transparent;
+}
+
+.form-floating-custom label {
+  padding: 1rem 1.25rem;
+  color: var(--text-secondary-dark) !important;
+  font-weight: 500;
+  pointer-events: none;
+  transform-origin: left top;
+  transition: all 0.3s ease;
+  line-height: 1.4;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.form-floating-custom .form-control:focus ~ label,
+.form-floating-custom .form-control:not(:placeholder-shown) ~ label {
+  color: #0d6efd !important;
+  font-size: 0.875rem;
+  padding-top: 0.5rem;
+  transform: translateY(-0.75rem) scale(0.85);
+}
+
+/* Icons */
+.form-icon-left {
+  position: absolute;
+  left: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  color: var(--text-secondary-dark);
+  font-size: 1.1rem;
+  pointer-events: none;
+  transition: color 0.3s ease;
+}
+
+.form-icon-right {
+  position: absolute;
+  right: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  color: var(--text-secondary-dark);
+  font-size: 1.1rem;
+  pointer-events: none;
+  transition: color 0.3s ease;
+}
+
+.form-control:focus ~ .form-icon-left,
+.form-control:focus ~ .form-icon-right {
+  color: #0d6efd;
+}
+
+/* Error States */
+.form-floating-custom.is-invalid .form-control {
+  border-color: #dc3545 !important;
+  background-color: rgba(220, 53, 69, 0.05) !important;
+  box-shadow: 0 0 0 0.375rem rgba(220, 53, 69, 0.15) !important;
+}
+
+.form-floating-custom.is-invalid label {
+  color: #dc3545 !important;
+}
+
+.invalid-feedback {
+  background: rgba(220, 53, 69, 0.1) !important;
+  border: 1px solid rgba(220, 53, 69, 0.3) !important;
+  color: #dc3545 !important;
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+/* Input Group */
+.input-group-custom {
+  --bs-input-group-addon-bg: rgba(26, 26, 26, 0.8);
+  --bs-input-group-addon-border-color: rgba(255, 255, 255, 0.1);
+}
+
+.input-group-custom .input-group-text {
+  background-color: var(--bs-input-group-addon-bg) !important;
+  border-color: var(--bs-input-group-addon-border-color) !important;
+  color: var(--text-secondary-dark);
+  border-radius: 12px 0 0 12px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Sizes */
+.form-control-lg-custom {
+  height: 56px !important;
+  font-size: 1.125rem;
+}
+
+.form-control-sm-custom {
+  height: 48px !important;
+  font-size: 0.875rem;
+  padding-top: 0.625rem;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .form-floating-custom .form-control {
+    height: 56px;
+    padding: 0.875rem 1rem 0;
+  }
+}
+
+/* Password visibility toggle */
+.password-toggle {
+  cursor: pointer;
+  color: var(--text-secondary-dark);
+  transition: color 0.2s ease;
+}
+
+.password-toggle:hover {
+  color: var(--text-primary-dark);
+}
+

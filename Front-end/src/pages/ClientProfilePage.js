@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateProfile } from '../store/authSlice';
+import { updateProfile } from '../redux/authSlice';
 import './ClientProfilePage.css';
 
 const ClientProfilePage = () => {

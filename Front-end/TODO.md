@@ -1,29 +1,11 @@
-# CraftConnect Platform Implementation
+# Redux Fix TODO
 
-## Phase 1: Core Infrastructure
-- [x] 1.1 Update App.js with complete routing
-- [x] 1.2 Expand Redux store with new slices (requests, artisans, reviews, notifications, favorites)
-- [x] 1.3 Create comprehensive mock data
-
-## Phase 2: Authentication & Navigation
-- [x] 2.1 Update Header with proper authentication state
-- [x] 2.2 Implement logout functionality
-- [x] 2.3 Add protected routes
-
-## Phase 3: Main Pages
-- [x] 3.1 Complete HomePage with featured artisans and categories
-- [x] 3.2 Complete ArtisansPage with search/filters
-- [x] 3.3 Complete Artisan/Client Dashboards
-
-## Phase 4: Features
-- [x] 4.1 Service Request System
-- [x] 4.2 Messaging System
-- [x] 4.3 Reviews & Ratings
-- [x] 4.4 Notifications Panel
-- [x] 4.5 Favorites System
-
-## Phase 5: Polish
-- [x] 5.1 Admin Panel
-- [x] 5.2 Responsive design improvements
-- [x] 5.3 Final testing
-
+## Steps:
+- [ ] 1. Fix src/redux/store.js imports and remove messageReducer
+- [ ] 2. Fix src/components/Header.js logoutUser import
+- [ ] 3. Fix src/pages/MessagesPage.js imports/selectors for chatSlice (state.chat)
+- [ ] 4. Fix src/pages/PaymentPage.js component imports
+- [ ] 5. Search/update any remaining '../store/' refs
+- [ ] 6. Remove src/redux/messageSlice.js (obsolete)
+- [ ] 7. Run `npm start` and fix ESLint/runtime errors
+- [ ] 8. Complete

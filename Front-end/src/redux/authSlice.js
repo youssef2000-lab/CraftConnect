@@ -1,24 +1,29 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { users as mockUsers } from '../data/mockData';
+import { users as mockUsers } from '../data/mockData.js';
 
 const initialState = {
   users: mockUsers,
   currentUser: null,
-  error: null
+  error: null,
+  loading: false
 };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    
-    registerUser: (state, action) => {
+    registerUserStart: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    registerUserSuccess: (state, action) => {
       const { nomComplet, email, motDePasse, typeCompte } = action.payload;
       
       const existingUser = state.users.find(user => user.email === email);
       
       if (existingUser) {
         state.error = 'Cet email est déjà utilisé';
+        state.loading = false;
         return;
       }
       
@@ -37,9 +42,18 @@ const authSlice = createSlice({
       state.users.push(newUser);
       state.currentUser = newUser;
       state.error = null;
+      state.loading = false;
+    },
+    registerUserFailure: (state, action) => {
+      state.error = action.payload;
+      state.loading = false;
     },
     
-    loginUser: (state, action) => {
+    loginUserStart: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    loginUserSuccess: (state, action) => {
       const { email, motDePasse } = action.payload;
       
       const user = state.users.find(
@@ -52,6 +66,11 @@ const authSlice = createSlice({
       } else {
         state.error = 'Email ou mot de passe incorrect';
       }
+      state.loading = false;
+    },
+    loginUserFailure: (state, action) => {
+      state.error = action.payload;
+      state.loading = false;
     },
     
     logoutUser: (state) => {
@@ -81,37 +100,33 @@ const authSlice = createSlice({
         }
       }
     },
-    
-    deleteUser: (state, action) => {
-      const userId = action.payload;
-      state.users = state.users.filter(user => user.id !== userId);
-      
-      // If the deleted user is the current user, log them out
-      if (state.currentUser && state.currentUser.id === userId) {
-        state.currentUser = null;
-      }
+    loginUser: (state, action) => {
+      state.user = action.payload;
     },
-    
-    addToFavorites: (state, action) => {
-      const artisanId = action.payload;
-      
-      if (state.currentUser) {
-        if (!state.currentUser.favorites) {
-          state.currentUser.favorites = [];
-        }
-        
-        if (!state.currentUser.favorites.includes(artisanId)) {
-          state.currentUser.favorites.push(artisanId);
-          
-          // Also update in users array
-          const userIndex = state.users.findIndex(u => u.id === state.currentUser.id);
-          if (userIndex !== -1) {
-            state.users[userIndex].favorites = state.currentUser.favorites;
-          }
-        }
-      }
+    registerUser: (state, action) => {
+      state.user = action.payload;
     },
+      
+   addToFavorites: (state, action) => {
+  const artisanId = action.payload;
+  
+  if (state.currentUser) {
+    if (!state.currentUser.favorites) {
+      state.currentUser.favorites = [];
+    }
     
+    if (!state.currentUser.favorites.includes(artisanId)) {
+      state.currentUser.favorites.push(artisanId);
+      
+      // Also update in users array
+      const userIndex = state.users.findIndex(u => u.id === state.currentUser.id);
+      if (userIndex !== -1) {
+        state.users[userIndex].favorites = [...state.currentUser.favorites];
+      }
+    }
+  }
+},
+
     removeFromFavorites: (state, action) => {
       const artisanId = action.payload;
       
@@ -128,17 +143,37 @@ const authSlice = createSlice({
   }
 });
 
-export const { 
-  registerUser, 
-  loginUser, 
-  logoutUser, 
+/* 
+ registerUserStart,
+registerUserSuccess,
+registerUserFailure,
+loginUserStart,
+loginUserSuccess,
+loginUserFailure,
+logoutUser,
+clearError,
+updateProfile,
+loginUser,
+registerUser,
+addToFavorites,
+removeFromFavorites
+*/
+
+export const {
+  registerUserStart,
+  registerUserSuccess,
+  registerUserFailure,
+  loginUserStart,
+  loginUserSuccess,
+  loginUserFailure,
+  logoutUser,
   clearError,
   updateProfile,
-  deleteUser,
+  loginUser,
+  registerUser,
   addToFavorites,
   removeFromFavorites
 } = authSlice.actions;
 
 export default authSlice.reducer;
-
 

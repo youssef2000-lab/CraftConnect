@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { sendMessage, setActiveConversation, selectMessagesByConversationId } from '../store/messageSlice';
+import { addMessage as sendMessage, setActiveConversation } from '../redux/chatSlice';
 import { artisans } from '../data/mockData';
 import './MessagesPage.css';
 
@@ -10,8 +10,8 @@ const MessagesPage = () => {
   const navigate = useNavigate();
   const { conversationId } = useParams();
   const { currentUser } = useSelector((state) => state.auth);
-  const { conversations } = useSelector((state) => state.messages);
-  const [message, setMessage] = useState('');
+  const conversations = useSelector((state) => state.chat.conversations.ids.map(id => state.chat.conversations.entities[id]).filter(Boolean));
+  const [message, setMessage ] = useState('');
   const [activeConvId, setActiveConvId] = useState(conversationId ? parseInt(conversationId) : null);
   
   // Get user's conversations
@@ -20,9 +20,7 @@ const MessagesPage = () => {
   );
   
   // Get current conversation messages
-  const currentMessages = useSelector((state) => 
-    activeConvId ? selectMessagesByConversationId(state, activeConvId) : []
-  );
+  const currentMessages = useSelector((state) => activeConvId ? Object.values(state.chat.messages.entities || {}) : []);
   
   const activeConversation = conversations.find(c => c.id === activeConvId);
   
@@ -45,12 +43,14 @@ const MessagesPage = () => {
       : activeConversation.clientName;
     
     dispatch(sendMessage({
+      id: Date.now(), 
       conversationId: activeConvId,
       senderId: currentUser?.id,
       senderName: currentUser?.nomComplet,
       receiverId,
       receiverName,
       message: message.trim(),
+      timestamp: Date.now()
     }));
     
     setMessage('');
@@ -106,15 +106,13 @@ const MessagesPage = () => {
                 <div className="chat-avatar">
                   {currentUser?.typeCompte === 'Client' 
                     ? activeConversation.artisanName?.charAt(0) 
-                    : activeConversation.clientName?.charAt(0)
-                  }
+                    : activeConversation.clientName?.charAt(0)}
                 </div>
                 <div className="chat-user-info">
                   <span className="chat-user-name">
                     {currentUser?.typeCompte === 'Client' 
                       ? activeConversation.artisanName 
-                      : activeConversation.clientName
-                    }
+                      : activeConversation.clientName}
                   </span>
                 </div>
               </div>

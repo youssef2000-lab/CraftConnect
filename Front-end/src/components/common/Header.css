@@ -1,0 +1,65 @@
+/* New Header CSS for Bootstrap version */
+.navbar-brand {
+  font-weight: 700 !important;
+  letter-spacing: -0.5px;
+}
+
+.logo-icon {
+  width: 44px;
+  height: 44px;
+  font-size: 1.3rem !important;
+}
+
+.avatar-sm {
+  width: 36px !important;
+  height: 36px !important;
+  font-size: 0.85rem !important;
+}
+
+.navbar-nav .nav-link {
+  padding: 0.75rem 1.25rem !important;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.navbar-nav .nav-link.active {
+  background-color: rgba(13, 110, 253, 0.15);
+  color: #0d6efd !important;
+}
+
+.dropdown-menu {
+  background-color: var(--bg-secondary-dark);
+  border: 1px solid var(--border-dark);
+  border-radius: 12px;
+  padding: 0.5rem 0;
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.4);
+}
+
+.dropdown-item {
+  padding: 0.75rem 1.5rem;
+  transition: all 0.2s ease;
+  border-radius: 8px;
+  margin: 0 0.25rem;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary-dark) !important;
+}
+
+.dropdown-divider {
+  border-color: var(--border-dark);
+  margin: 0.25rem 0;
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    background-color: var(--bg-secondary-dark);
+    border-radius: 12px;
+    margin-top: 1rem;
+    padding: 1.5rem;
+    box-shadow: var(--card-shadow);
+  }
+}
+

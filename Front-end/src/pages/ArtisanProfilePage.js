@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectArtisanById, selectReviewsByArtisanId, addReview } from '../store/artisanSlice';
-import { createRequest } from '../store/requestSlice';
-import { addNotification } from '../store/notificationSlice';
-import { selectConversationsByUserId, createConversation } from '../store/messageSlice';
-import { addToFavorites, removeFromFavorites } from '../store/authSlice';
+import { selectArtisanById, selectReviewsByArtisanId, addReview } from '../redux/artisanSlice';
+import { createRequest } from '../redux/requestSlice';
+import { addNotification } from '../redux/notificationSlice';
+import { createConversation } from '../redux/chatSlice';
+import { addToFavorites, removeFromFavorites } from '../redux/authSlice';
 import './ArtisanProfilePage.css';
 
 const ArtisanProfilePage = () => {
@@ -16,7 +16,6 @@ const ArtisanProfilePage = () => {
   const artisan = useSelector((state) => selectArtisanById(state, id));
   const reviews = useSelector((state) => selectReviewsByArtisanId(state, id));
   const { currentUser } = useSelector((state) => state.auth);
-  
   const [activeTab, setActiveTab] = useState('about');
   const [showRequestModal, setShowRequestModal] = useState(false);
   const [requestForm, setRequestForm] = useState({
@@ -32,7 +31,6 @@ const ArtisanProfilePage = () => {
   });
   const [showReviewModal, setShowReviewModal] = useState(false);
   const [completedRequestId, setCompletedRequestId] = useState(null);
-  
   const isFavorite = currentUser?.favorites?.includes(parseInt(id));
   const isOwnProfile = currentUser?.id === parseInt(id);
   const isClient = currentUser?.typeCompte === 'Client';

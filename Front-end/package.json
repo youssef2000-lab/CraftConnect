@@ -1,26 +1,21 @@
 {
-  "name": "npx",
+  "name": "craftconnect-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@reduxjs/toolkit": "^2.11.2",
-    "@tanstack/react-query": "^5.90.21",
-    "@testing-library/dom": "^10.4.1",
-    "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/react": "^16.3.2",
-    "@testing-library/user-event": "^13.5.0",
-    "axios": "^1.13.6",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
-    "react-dropzone": "^15.0.0",
-    "react-hook-form": "^7.71.2",
-    "react-icons": "^5.6.0",
-    "react-redux": "^9.2.0",
-    "react-router-dom": "^7.13.1",
-    "react-scripts": "5.0.1",
-    "react-toastify": "^11.0.5",
-    "web-vitals": "^2.1.4",
-    "zustand": "^5.0.11"
+    "@babel/core": "^7.29.0",
+    "@babel/preset-env": "^7.29.2",
+    "@babel/preset-react": "^7.28.5",
+    "@babel/runtime": "^7.29.2",
+    "@reduxjs/toolkit": "^1.9.7",
+    "bootstrap": "^5.3.3",
+    "clsx": "^2.1.1",
+    "framer-motion": "^10.16.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-redux": "^8.1.3",
+    "react-router-dom": "^6.26.2",
+    "react-scripts": "5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -48,7 +43,8 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.27",
-    "postcss": "^8.5.8",
-    "tailwindcss": "^4.2.1"
+    "browserslist": "^4.28.1",
+    "caniuse-lite": "^1.0.30001781",
+    "lodash": "^4.17.23"
   }
 }

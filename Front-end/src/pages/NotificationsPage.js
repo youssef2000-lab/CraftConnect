@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { markAsRead, markAllAsRead, selectNotificationsByUserId } from '../store/notificationSlice';
+import { markAsRead, markAllAsRead, selectNotificationsByUserId } from '../redux/notificationSlice';
 import './NotificationsPage.css';
 
 const NotificationsPage = () => {

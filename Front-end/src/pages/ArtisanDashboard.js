@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { acceptRequest, rejectRequest, completeRequest } from '../store/requestSlice';
-import { addNotification } from '../store/notificationSlice';
+import { acceptRequest, rejectRequest, completeRequest } from '../redux/requestSlice';
+import { addNotification } from '../redux/notificationSlice';
 import './Dashboard.css';
 
 const ArtisanDashboard = () => {

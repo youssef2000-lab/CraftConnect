@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { logoutUser } from '../store/authSlice';
-import { selectUnreadCountByUserId } from '../store/notificationSlice';
+import { logoutUser } from '../redux/authSlice';
+import { selectUnreadCountByUserId } from '../redux/notificationSlice';
 import './Header.css';
 
 const Header = () => {

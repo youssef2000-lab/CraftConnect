@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteUser } from '../store/authSlice';
+import { deleteUser } from '../redux/authSlice';
 import { artisans, reviews } from '../data/mockData';
 import './Dashboard.css';
 

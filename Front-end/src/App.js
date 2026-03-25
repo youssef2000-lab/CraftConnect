@@ -1,25 +1,25 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Provider, useSelector } from 'react-redux';
-import store from './store';
+import store from './redux/store';
 import './App.css';
-
-// Pages
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import ArtisansPage from './pages/ArtisansPage';
 import ArtisanProfilePage from './pages/ArtisanProfilePage';
-import ClientProfilePage from './pages/ClientProfilePage';
-import ArtisanDashboard from './pages/ArtisanDashboard';
 import ClientDashboard from './pages/ClientDashboard';
-import AdminDashboard from './pages/AdminDashboard';
-import FavoritesPage from './pages/FavoritesPage';
+import ArtisanDashboard from './pages/ArtisanDashboard';
+import OrdersPage from './pages/OrdersPage';
 import MessagesPage from './pages/MessagesPage';
+import PaymentPage from './pages/PaymentPage';
+import ServicesPage from './pages/ServicesPage';
+import FavoritesPage from './pages/FavoritesPage';
 import NotificationsPage from './pages/NotificationsPage';
+import ClientProfilePage from './pages/ClientProfilePage';
 
 // Components
-import Header from './components/Header';
+import Header from './components/common/Header';
 import Footer from './components/Footer';
 
 // Protected Route Component
@@ -31,14 +31,7 @@ const ProtectedRoute = ({ children, allowedRoles }) => {
   }
   
   if (allowedRoles && !allowedRoles.includes(currentUser.typeCompte)) {
-    // Redirect to appropriate dashboard based on role
-    if (currentUser.typeCompte === 'Artisan') {
-      return <Navigate to="/artisan-dashboard" replace />;
-    } else if (currentUser.typeCompte === 'Admin') {
-      return <Navigate to="/admin-dashboard" replace />;
-    } else {
-      return <Navigate to="/client-dashboard" replace />;
-    }
+    return <Navigate to="/" replace />;
   }
   
   return children;
@@ -62,10 +55,20 @@ function App() {
     <Provider store={store}>
       <Router>
         <Routes>
-          {/* Public Routes */}
+          
           <Route path="/" element={
             <AppLayout>
               <HomePage />
+            </AppLayout>
+          } />
+          <Route path="/services" element={
+            <AppLayout>
+              <ServicesPage />
+            </AppLayout>
+          } />
+          <Route path="/artisans" element={
+            <AppLayout>
+              <ArtisansPage />
             </AppLayout>
           } />
           <Route path="/login" element={
@@ -78,19 +81,13 @@ function App() {
               <RegisterPage />
             </AppLayout>
           } />
-          <Route path="/artisans" element={
-            <AppLayout>
-              <ArtisansPage />
-            </AppLayout>
-          } />
           <Route path="/artisan/:id" element={
             <AppLayout>
               <ArtisanProfilePage />
             </AppLayout>
           } />
           
-          {/* Protected Routes - Client */}
-          <Route path="/client-dashboard" element={
+          <Route path="/client" element={
             <ProtectedRoute allowedRoles={['Client']}>
               <AppLayout>
                 <ClientDashboard />
@@ -111,54 +108,45 @@ function App() {
               </AppLayout>
             </ProtectedRoute>
           } />
-          <Route path="/messages" element={
+          <Route path="/orders" element={
+            <ProtectedRoute allowedRoles={['Client', 'Artisan']}>
+              <AppLayout>
+                <OrdersPage />
+              </AppLayout>
+            </ProtectedRoute>
+          } />
+          <Route path="/payment" element={
+            <ProtectedRoute allowedRoles={['Client']}>
+              <AppLayout>
+                <PaymentPage />
+              </AppLayout>
+            </ProtectedRoute>
+          } />
+          <Route path="/chat" element={
             <ProtectedRoute allowedRoles={['Client', 'Artisan']}>
               <AppLayout>
                 <MessagesPage />
               </AppLayout>
             </ProtectedRoute>
           } />
-          <Route path="/messages/:conversationId" element={
-            <ProtectedRoute allowedRoles={['Client', 'Artisan']}>
-              <AppLayout>
-                <MessagesPage />
-              </AppLayout>
-            </ProtectedRoute>
-          } />
-          
-          {/* Protected Routes - Artisan */}
-          <Route path="/artisan-dashboard" element={
+          <Route path="/artisan" element={
             <ProtectedRoute allowedRoles={['Artisan']}>
               <AppLayout>
                 <ArtisanDashboard />
               </AppLayout>
             </ProtectedRoute>
           } />
-          <Route path="/artisan-profile" element={
-            <ProtectedRoute allowedRoles={['Artisan']}>
-              <AppLayout>
-                <ArtisanProfilePage />
-              </AppLayout>
-            </ProtectedRoute>
-          } />
+          
+         
           <Route path="/notifications" element={
-            <ProtectedRoute allowedRoles={['Client', 'Artisan', 'Admin']}>
+            <ProtectedRoute>
               <AppLayout>
                 <NotificationsPage />
               </AppLayout>
             </ProtectedRoute>
           } />
           
-          {/* Protected Routes - Admin */}
-          <Route path="/admin-dashboard" element={
-            <ProtectedRoute allowedRoles={['Admin']}>
-              <AppLayout>
-                <AdminDashboard />
-              </AppLayout>
-            </ProtectedRoute>
-          } />
-          
-          {/* Catch all - redirect to home */}
+         
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Router>
@@ -167,4 +155,3 @@ function App() {
 }
 
 export default App;
-

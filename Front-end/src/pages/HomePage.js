@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { setFilters } from '../store/artisanSlice';
+import { setFilters } from '../redux/artisanSlice';
 import { categories, artisans } from '../data/mockData';
 import './HomePage.css';
 
